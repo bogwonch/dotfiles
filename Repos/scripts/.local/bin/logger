@@ -1,0 +1,39 @@
+#! /bin/bash
+
+program_name="$(basename "${0}")"
+
+if [ $# -ge 3 ]; then
+  level="${1}"
+  shift
+  sender="${1}"
+  shift
+  message="${*}"
+else
+  level='error'
+  sender="${program_name}"
+  message='logger given insufficient arguments'
+fi
+
+case "${level}" in
+  'e'|'err'|'error')
+    color="\033[0;31m"
+    symbol="❌ "
+    ;;
+  'w'|'warn'|'warning')
+    color="\033[0;33m"
+    symbol="⚠️ "
+    ;;
+  'i'|'info')
+    color="\033[0;32m"
+    symbol="💬 "
+    ;;
+  'd'|'debug')
+    if [ -z "${DEBUG}" ]; then exit 0; fi
+    color="\033[0;34m"
+    symbol="💊 "
+    ;;
+  *)
+esac
+
+printf "\n${color}[%s%s: %s]\e[0m %s\n" "${symbol}" "${sender}" "$(date '+%F %R')" "${message}" >&2
+
