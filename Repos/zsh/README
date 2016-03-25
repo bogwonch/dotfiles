@@ -1,0 +1,5 @@
+# ZSH
+
+Setup for my shell.
+
+Sources all files ending in `.zsh` from `.config/zsh/scripts`.  
