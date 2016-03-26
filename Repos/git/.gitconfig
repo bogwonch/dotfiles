@@ -1,0 +1,7 @@
+[color]
+	ui = auto
+[user]
+	name = Joseph Hallett
+	email = josephhallett@gmail.com
+[push]
+	default = simple
