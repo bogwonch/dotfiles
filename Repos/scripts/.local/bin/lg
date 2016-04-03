@@ -35,5 +35,5 @@ case "${level}" in
   *)
 esac
 
-printf "\n${color}[%s%s: %s]\e[0m %s\n" "${symbol}" "${sender}" "$(date '+%F %R')" "${message}" >&2
+printf "${color}[%s%s: %s]\e[0m %s\n" "${symbol}" "${sender}" "$(date '+%F %R')" "${message}" >&2
 
