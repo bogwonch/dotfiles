@@ -2,7 +2,7 @@
 # Installs all the dotfiles
 
 dotfiles="${DOTFILES_REPO:-${HOME}/Dotfiles}"
-logger="${dotfiles}/Scripts/logger"
+logger="${dotfiles}/Scripts/lg"
 
 # Test if stow is installed: if not error and exit
 which -s stow
