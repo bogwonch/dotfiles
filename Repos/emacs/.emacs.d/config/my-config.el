@@ -7,6 +7,7 @@
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (fringe-mode 0)
+(setq inhibit-startup-screen t)
   
 ;; backups
 (defvar my-backup-directory (concat user-emacs-directory "backups"))
@@ -25,11 +26,7 @@
 (setq create-lockfiles nil)
 
 ;; fonts
-(defvar my-font "PragmataPro-11")
+(defvar my-font "PragmataPro-13")
 (add-to-list 'default-frame-alist `(font . ,my-font))
 (set-face-attribute 'default t :font my-font)
 (set-frame-font my-font nil t)
-
-;; mac settings
-(setq mac-option-key-is-meta t
-      mac-option-modifier 'meta)
