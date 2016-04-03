@@ -1,0 +1,42 @@
+[options]
+allow_bold = true
+audible_bell = false
+browser = qvm-open-in-dvm
+clickable_url = true
+cursor_blink = off
+cursor_shape = underline
+dynamic_title = true
+filter_unmatched_urls = true
+font = PragmataPro 13
+mouse_autohide = true
+
+[colors]
+# special
+foreground      = #cfd8dc
+foreground_bold = #eceff1
+cursor          = #607d8b
+background      = #263238
+# black
+color0  = #212121
+color8  = #000000
+# red
+color1  = #e91e63
+color9  = #ff4081
+# green
+color2  = #8bc34a
+color10 = #76ff03
+# yellow
+color3  = #ffc107
+color11 = #ffeb3b
+# blue
+color4  = #03a9f4
+color12 = #40c4ff
+# magenta
+color5  = #673ab7
+color13 = #7c4dff
+# cyan
+color6  = #009688
+color14 = #1de9b6
+# white
+color7  = #f5f5f5
+color15 = #ffffff
