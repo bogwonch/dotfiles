@@ -5,7 +5,7 @@ dotfiles="${DOTFILES_REPO:-${HOME}/Dotfiles}"
 logger="${dotfiles}/Scripts/lg"
 
 # Test if stow is installed: if not error and exit
-which -s stow
+which stow 2>&1 >/dev/null
 if [ $? -eq 1 ]; then
   $logger error "$(basename "${0}")" "couldn't find stow: install it and try again"
   exit 1
