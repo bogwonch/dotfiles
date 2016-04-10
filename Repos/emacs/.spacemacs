@@ -40,8 +40,8 @@ values."
      evil-cleverparens
      evil-snipe
      (geolocation :variables
-                                        ;geolocation-enable-automatic-theme-changer t
-                  geolocation-enable-weather-forecast t)
+          ;geolocation-enable-automatic-theme-changer t
+          :geolocation-enable-weather-forecast t)
      git
      go
      haskell
@@ -140,7 +140,7 @@ values."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("PragmataPro"
-                               :size 13
+                               :size 17
                                :weight normal
                                :width normal
                                :powerline-scale 1.0)
@@ -273,6 +273,7 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  (setq vc-follow-symlinks nil)
   )
 
 (defun dotspacemacs/user-config ()
@@ -286,7 +287,7 @@ you should place you code here."
   (setq powerline-default-separator 'utf-8)
 
   (spacemacs/toggle-evil-cleverparens-on)
-  )
+)
 
 ;; do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
