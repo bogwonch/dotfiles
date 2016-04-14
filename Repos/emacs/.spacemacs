@@ -286,8 +286,23 @@ you should place you code here."
   ;; Don't try and GUI things up: use Unicode
   (setq powerline-default-separator 'utf-8)
 
-  (spacemacs/toggle-evil-cleverparens-on)
-)
+  ;; Don't warn about me setting shell variables
+  (setq exec-path-from-shell-check-startup-files nil)
 
+  (spacemacs/toggle-evil-cleverparens-on)
+
+  (add-hook 'markdown-mode-hook #'flycheck-mode)
+  (flycheck-define-checker proselint
+    "A linter for prose."
+    :command ("proselint" source-inplace)
+    :error-patterns
+    ((warning line-start (file-name) ":" line ":" column ": "
+              (id (one-or-more (not (any " "))))
+              (message (one-or-more not-newline)
+                       (zero-or-more "\n" (any " ") (one-or-more not-newline)))
+              line end))
+    :modes (text-mode markdown-mode gfm-mode latex-mode))
+  (add-to-list 'flycheck-checkers 'proselint)
+)
 ;; do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
