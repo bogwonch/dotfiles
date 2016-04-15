@@ -1,30 +1,75 @@
-;;; init.el --- Spacemacs Initialization File
-;;
-;; Copyright (c) 2012-2016 Sylvain Benner & Contributors
-;;
-;; Author: Sylvain Benner <sylvain.benner@gmail.com>
-;; URL: https://github.com/syl20bnr/spacemacs
-;;
-;; This file is not part of GNU Emacs.
-;;
-;;; License: GPLv3
+(require 'package)
+(add-to-list 'package-archives
+                          '("melpa" . "https://melpa.org/packages/"))
+(when (< emacs-major-version 24)
+      (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize)
 
-;; Without this comment emacs25 adds (package-initialize) here
-;; (package-initialize)
+(if (not (package-installed-p 'use-package))
+    (progn
+      (package-refresh-contents)
+      (package-install 'use-package)))
+(require 'use-package)
+(require 'diminish)                ;; if you use :diminish
+(require 'bind-key)                ;; if you use any :bind varian
 
-(setq gc-cons-threshold 100000000)
-(defconst spacemacs-version         "0.105.16" "Spacemacs version.")
-(defconst spacemacs-emacs-min-version   "24.3" "Minimal version of Emacs.")
+(setq use-package-always-ensure t) ; always install all emacs packages
 
-(if (not (version<= spacemacs-emacs-min-version emacs-version))
-    (message (concat "Your version of Emacs (%s) is too old. "
-                     "Spacemacs requires Emacs version %d or above.")
-             emacs-version spacemacs-emacs-min-version)
-  (load-file (concat user-emacs-directory "core/core-load-paths.el"))
-  (require 'core-spacemacs)
-  (spacemacs/init)
-  (spacemacs/maybe-install-dotfile)
-  (configuration-layer/sync)
-  (spacemacs/setup-startup-hook)
-  (require 'server)
-  (unless (server-running-p) (server-start)))
+;; Evil mode
+(use-package evil
+  :config
+  (evil-mode 1))
+
+(use-package evil-leader
+  :config
+  ;(evil-leader/set-leader "<SPC>")
+  (global-evil-leader-mode))
+
+(use-package evil-org)
+
+;; Material theme
+(use-package material-theme
+  :config
+  (load-theme 'material t))
+
+;; Font
+(let ((my-font "PragmataPro-13"))
+  (eval `(progn
+	   (add-to-list 'default-frame-alist '(font . ,my-font))
+	   (set-face-attribute 'default t :font ,my-font))))
+
+;; Appearance
+(scroll-bar-mode -1)
+
+;; Hydra
+(use-package hydra)
+
+(defhydra hydra-space (:color blue :hint t)
+  "command"
+  ("t" hydra-text/body "change text properties")
+  (":" helm-M-x "run command"))
+(define-key evil-normal-state-map (kbd "<SPC>") 'hydra-space/body)
+
+(defhydra hydra-zoom (:color blue :hint t)
+  "zoom"
+  ("+" text-scale-increase "in")
+  ("-" text-scale-decrease "out"))
+
+(defhydra hydra-text (:color blue :hint t)
+  "text manipulation"
+  ("z" hydra-zoom/body "change text size"))
+
+;(evil-leader/set-key "<SPC>" 'hydra-space/body)
+
+;; Markdown mode
+(use-package markdown-mode
+  :mode (("\\.md\\'" . markdown-mode)
+	 ("\\.markdown\\'" . markdown-mode)))
+
+;; Swiper and Ivy
+(use-package helm)
+
+;(use-package counsel
+;  :config
+;  (progn
+;    (setq counsel-find-file-at-point t)))
