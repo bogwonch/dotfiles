@@ -11,7 +11,7 @@ function main {
     elif [ -r "${TIMESTAMP_FILE}" ]; then
         local timestamp=$(head -n1 "${TIMESTAMP_FILE}")
         local current_time="$(date +%s)"
-        if [ (( ${current_time} - ${timestamp} )) -gt ${UPDATE_INTERVAL} ]; then
+        if [ $(( ${current_time} - ${timestamp} )) -gt ${UPDATE_INTERVAL} ]; then
             lg d dotfiles-auto-update timestamp out of date
             update_dotfiles
         fi 
