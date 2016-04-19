@@ -1,3 +1,11 @@
+tool-bar-mode -1)
+;; Font
+(let ((my-font "PragmataPro-13"))
+  (eval `(progn
+	   (add-to-list 'default-frame-alist '(font . ,my-font))
+	   (set-face-attribute 'default t :font ,my-font))))
+
+;; Package management
 (require 'package)
 (add-to-list 'package-archives
                           '("melpa" . "https://melpa.org/packages/"))
@@ -15,6 +23,10 @@
 
 (setq use-package-always-ensure t) ; always install all emacs packages
 
+;; Lispy
+(use-package lispy)
+(load-file "~/.emacs.d/local/evil-lispy/evil-lispy.el")
+
 ;; Evil mode
 (use-package evil
   :config
@@ -31,12 +43,6 @@
 (use-package material-theme
   :config
   (load-theme 'material t))
-
-;; Font
-(let ((my-font "PragmataPro-13"))
-  (eval `(progn
-	   (add-to-list 'default-frame-alist '(font . ,my-font))
-	   (set-face-attribute 'default t :font ,my-font))))
 
 ;; Appearance
 (scroll-bar-mode -1)
