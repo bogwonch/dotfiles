@@ -1,0 +1,3 @@
+[submodule "Repos/emacs/.emacs.d/local/evil-lispy"]
+	path = Repos/emacs/.emacs.d/local/evil-lispy
+	url = https://github.com/bcarrell/evil-lispy
