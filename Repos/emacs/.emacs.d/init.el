@@ -1,4 +1,4 @@
-tool-bar-mode -1)
+(tool-bar-mode -1)
 ;; Font
 (let ((my-font "PragmataPro-13"))
   (eval `(progn
