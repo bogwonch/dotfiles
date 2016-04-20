@@ -50,11 +50,11 @@
 ;; Hydra
 (use-package hydra)
 
+(define-key evil-normal-state-map (kbd "<SPC>") 'hydra-space/body)
 (defhydra hydra-space (:color blue :hint t)
   "command"
   ("t" hydra-text/body "change text properties")
   (":" helm-M-x "run command"))
-(define-key evil-normal-state-map (kbd "<SPC>") 'hydra-space/body)
 
 (defhydra hydra-zoom (:color blue :hint t)
   "zoom"
@@ -79,3 +79,24 @@
 ;  :config
 ;  (progn
 ;    (setq counsel-find-file-at-point t)))
+
+;; Company-mode completion
+(use-package company
+  :config (progn
+	    (use-package company-shell)
+	    (use-package company-quickhelp)
+	    (global-company-mode)
+	    (setq company-idle-delay 0.2
+		  company-minimum-prefix-length 1)))
+
+(use-package rust-mode
+  :mode (("\\.rs\\'" . rust-mode))
+  :config (progn
+	    (use-package racer)
+	    (use-package company-racer)
+	    (use-package rust-mode)
+	    (setq racer-cmd "~/.cargo/bin/racer"
+		  racer-rust-src-path "~/Repos/github.com/rust-lang/rust/src")
+	    (add-hook 'rust-mode-hook '(lambda ()
+					 (racer-activate)
+					 (set (make-local-variable 'company-backends) '(company-racer))))))
