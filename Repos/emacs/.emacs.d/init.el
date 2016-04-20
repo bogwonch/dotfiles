@@ -5,6 +5,13 @@
 	   (add-to-list 'default-frame-alist '(font . ,my-font))
 	   (set-face-attribute 'default t :font ,my-font))))
 
+;; Don't polute filesystem
+(custom-set-variables
+ '(auto-save-file-name-transforms '((".*" "~/.emacs.d/autosaves/\\1" t)))
+ '(backup-directory-alist '((".*" . "~/.emacs.d/backups"))))
+(make-directory "~/.emacs.d/autosaves" t)
+(make-directory "~/.emacs.d/backups" t)
+
 ;; Package management
 (require 'package)
 (add-to-list 'package-archives
