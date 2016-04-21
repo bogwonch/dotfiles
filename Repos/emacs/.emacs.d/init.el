@@ -51,10 +51,14 @@
   ;(evil-leader/set-leader "<SPC>")
   (global-evil-leader-mode))
 
-(use-package evil-org)
-(add-hook 'org-mode-hook
-	  '(lambda ()
-	     (org-indent-mode 1)))
+(use-package org
+  :config (progn
+	    (use-package evil-org)
+	    (use-package org-ref)
+	    (add-hook
+	     'org-mode-hook
+	     '(lambda ()
+		(org-indent-mode 1)))))
 
 ;; Material theme
 (use-package material-theme
