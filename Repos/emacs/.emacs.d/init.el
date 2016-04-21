@@ -92,10 +92,23 @@
   :config (progn
 	    (use-package company-shell)
 	    (use-package company-quickhelp)
+	    (use-package helm-company)
 	    (global-company-mode)
-	    (setq company-idle-delay 0.2
-		  company-minimum-prefix-length 1)))
+	    (setq company-idle-delay 0.0
+		  company-minimum-prefix-length 1)
+	    (define-key evil-insert-state-map (kbd "C-n") 'company-complete-common-or-cycle)
+	    (define-key company-active-map (kbd "C-n") 'company-complete-common-or-cycle)
+	    (define-key evil-insert-state-map (kbd "C-p") 'company-complete-common-or-cycle-backward)
+	    (define-key company-active-map (kbd "C-p") 'company-complete-common-or-cycle-backward)))
 
+(defhydra hydra-company (:color blue :hint t)
+  "auto completion"
+  ("C-f" company-files "file completion")
+  ("C-/" helm-company "complete in menu"))
+(define-key evil-insert-state-map (kbd "C-x") 'hydra-company/body)
+(define-key company-active-map (kbd "C-x") 'hydra-company/body)
+
+;; Rust
 (use-package rust-mode
   :mode (("\\.rs\\'" . rust-mode))
   :config (progn
