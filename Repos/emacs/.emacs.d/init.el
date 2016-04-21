@@ -160,3 +160,8 @@
 	    (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state
 		  powerline-height 20
 		  powerline-default-separator 'bar)))
+
+;; Snippets
+(use-package yasnippet
+  :config (progn
+	    (yas-global-mode 1)))
