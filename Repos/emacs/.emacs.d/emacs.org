@@ -1,6 +1,0 @@
-* TODO refactor init.el into separate files
-* TODO figure out why the hydras only seem to work when their color is blue
-  
-- [100%]
-  - [X] what happens when they're red?
-  - [X] what happens when they're green?
