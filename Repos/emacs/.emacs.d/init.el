@@ -70,7 +70,7 @@
 (define-key evil-normal-state-map (kbd "<SPC>") 'hydra-space/body)
 (defhydra hydra-space (:color blue :hint t)
   "command"
-  ("t" hydra-text/body "change text properties")
+  ("T" hydra-theme/body "change theme properties")
   (":" helm-M-x "run command"))
 
 (defhydra hydra-zoom (:color blue :hint t)
@@ -78,9 +78,30 @@
   ("+" text-scale-increase "in")
   ("-" text-scale-decrease "out"))
 
-(defhydra hydra-text (:color blue :hint t)
+(defhydra hydra-theme (:color blue :hint t)
   "text manipulation"
-  ("z" hydra-zoom/body "change text size"))
+  ("z" hydra-zoom/body "change text size")
+  ("p" hydra-powerline-separator/body "change powerline separator"))
+
+(defhydra hydra-powerline-separator (:color blue :hint t)
+  "powerline separators"
+  ("A" (setq powerline-default-separator 'alternate) "alternate")
+  ("a" (setq powerline-default-separator 'arrow) "arrow")
+  ("f" (setq powerline-default-separator 'arrow-fade) "arrow-fade")
+  ("|" (setq powerline-default-separator 'bar) "bar")
+  ("b" (setq powerline-default-separator 'box) "box")
+  ("[" (setq powerline-default-separator 'brace) "brace")
+  ("B" (setq powerline-default-separator 'butt) "butt")
+  ("c" (setq powerline-default-separator 'chamfer) "chamfer")
+  ("C" (setq powerline-default-separator 'contour) "contour")
+  ("(" (setq powerline-default-separator 'curve) "curve")
+  (")" (setq powerline-default-separator 'rounded) "rounded")
+  ("]" (setq powerline-default-separator 'roundstub) "roundstub")
+  ("/" (setq powerline-default-separator 'slant) "slant")
+  ("w" (setq powerline-default-separator 'wave) "wave")
+  ("z" (setq powerline-default-separator 'zigzag) "zigzag")
+  ("u" (setq powerline-default-separator 'utf-8) "utf-8")
+  ("n" (setq powerline-default-separator 'nil) "none"))
 
 ;(evil-leader/set-key "<SPC>" 'hydra-space/body)
 
@@ -91,11 +112,6 @@
 
 ;; Swiper and Ivy
 (use-package helm)
-
-;(use-package counsel
-;  :config
-;  (progn
-;    (setq counsel-find-file-at-point t)))
 
 ;; Company-mode completion
 (use-package company
@@ -130,3 +146,13 @@
 	    (add-hook 'rust-mode-hook '(lambda ()
 					 (racer-activate)
 					 (set (make-local-variable 'company-backends) '(company-racer))))))
+
+;; Prettier prompt
+(use-package spaceline
+  :config (progn
+	    (use-package powerline)
+	    (require 'spaceline-config)
+	    (spaceline-emacs-theme)
+	    (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state
+		  powerline-height 20
+		  powerline-default-separator 'bar)))
