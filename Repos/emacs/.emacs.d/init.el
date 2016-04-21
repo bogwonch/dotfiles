@@ -33,6 +33,13 @@
 ;; Lispy
 (use-package lispy)
 (load-file "~/.emacs.d/local/evil-lispy/evil-lispy.el")
+(dolist (hook '(emacs-lisp-mode-hook
+		lisp-mode-hook
+		lisp-interaction-mode-hook))
+  (add-hook hook '(lambda ()
+		    (lispy-mode)
+		    (evil-lispy-mode)
+		    (show-paren-mode))))
 
 ;; Evil mode
 (use-package evil
@@ -45,6 +52,9 @@
   (global-evil-leader-mode))
 
 (use-package evil-org)
+(add-hook 'org-mode-hook
+	  '(lambda ()
+	     (org-indent-mode 1)))
 
 ;; Material theme
 (use-package material-theme
