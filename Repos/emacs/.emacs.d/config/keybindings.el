@@ -1,7 +1,9 @@
 (defhydra hydra-space (:color blue :hint t)
   "command"
   ("T" hydra-theme/body "change theme properties")
-  (":" helm-M-x "run command"))
+  (":" helm-M-x "run command")
+  ("f" helm-for-files "find file")
+  ("b" helm-buffers-list "find buffer"))
 
 (defhydra hydra-zoom (:color blue :hint t)
   "zoom"
