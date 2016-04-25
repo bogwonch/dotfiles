@@ -1,9 +1,14 @@
 (defhydra hydra-space (:color blue :hint t)
   "command"
+  ("a" hydra-applications/body "applications")
+  ("c" hydra-compilation/body "compilation")
   ("T" hydra-theme/body "change theme properties")
   (":" helm-M-x "run command")
   ("f" helm-for-files "find file")
   ("b" helm-buffers-list "find buffer"))
+
+(defhydra hydra-compilation (:color blue :hint t)
+  ("r" helm-flycheck "show errors"))
 
 (defhydra hydra-zoom (:color blue :hint t)
   "zoom"
@@ -19,6 +24,10 @@
 	      "auto completion"
 	      ("C-f" company-files "file completion")
 	      ("C-/" helm-company "complete in menu"))
+
+(defhydra hydra-applications (:color blue :hint t)
+	  "applications"
+	  ("n" deft "note taking with Deft"))
 
 ;; Global power menu
 (define-key evil-normal-state-map (kbd "<SPC>") 'hydra-space/body)
