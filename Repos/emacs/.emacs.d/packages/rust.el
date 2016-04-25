@@ -1,5 +1,5 @@
 (req-package rust-mode
-  :require rust-mode company-racer
+  :require company-racer
   :mode (("\\.rs\\'" . rust-mode)))
 
 (req-package company-racer
