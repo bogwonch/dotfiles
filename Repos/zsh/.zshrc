@@ -1,4 +1,6 @@
-autoload -U compaudit compinit
+autoload -Uz compaudit compinit
+compinit
+compaudit
 
 # Load scripts from the config dir
 zsh_config_dir="${HOME}/.config/zsh/scripts"
@@ -11,3 +13,5 @@ else
   logger warn .zshrc "couldn't find config file directory: no personal setting will be loaded"
 fi
 
+# Menu completions
+zstyle ':completions:*' menu select

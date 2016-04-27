@@ -1,1 +1,6 @@
 elpa/*
+auto-save-list/*
+autosaves/*
+backups/*
+.python-environments/*
+recentf

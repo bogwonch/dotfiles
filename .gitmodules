@@ -1,0 +1,6 @@
+[submodule "Repos/emacs/.emacs.d/local/evil-lispy"]
+	path = Repos/emacs/.emacs.d/local/evil-lispy
+	url = https://github.com/sp3ctum/evil-lispy
+[submodule "Repos/zsh/.config/zsh/zplug"]
+	path = Repos/zsh/.config/zsh/zplug
+	url = https://github.com/b4b4r07/zplug
