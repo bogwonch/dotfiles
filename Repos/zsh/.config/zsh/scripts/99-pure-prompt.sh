@@ -5,6 +5,7 @@
 # MIT License
 
 # Modified by Bogwonch
+prompt off
 
 # For my own and others sanity
 # git:
