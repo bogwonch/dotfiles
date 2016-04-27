@@ -3,7 +3,7 @@ source "${HOME}/.config/zsh/zplug/zplug"
 
 zplug "supercrabtree/k"
 zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions"
+#zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting"
 
 # Install plugins if there are plugins that have not been installed
