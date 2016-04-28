@@ -1,3 +1,5 @@
+export DOTFILES_HOME=/opt/dotfiles/
+
 autoload -Uz compaudit compinit
 compinit
 compaudit

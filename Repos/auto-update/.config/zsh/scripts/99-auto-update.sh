@@ -1,7 +1,7 @@
 #! /bin/sh
 # Checks the dotfiles are up to date
 
-TIMESTAMP_FILE="${HOME}/Dotfiles/.timestamp"
+TIMESTAMP_FILE="${DOTFILES_HOME}/.timestamp"
 UPDATE_INTERVAL=$(( 60 * 60 * 12 )) # How long between updates (12 hours)
 
 function main {
@@ -20,11 +20,11 @@ function main {
 
 function update_dotfiles {
     lg i dotfiles-auto-update updating dotfiles
-    cd ~/Dotfiles
+    cd "${DOTFILES_HOME}"
     git stash
     git pull --rebase
     git stash apply
-    ~/Dotfiles/Scripts/install.sh
+    "${DOTFILES_HOME}/Scripts/install.sh"
     cd ~
     date +%s >"${TIMESTAMP_FILE}"
 }
