@@ -19,6 +19,7 @@ myConfig =
   , keys = myKeys
   , layoutHook = myLayoutHook
   , qubesColors = myQubesColors
+  , borderWidth = 0
   }
 
 myLayoutHook = noFrillsDeco shrinkText def{ fontName="xft:Source Sans Pro-13" } $ spacing 5 (layoutHook myDefaultConfig) ||| Full
