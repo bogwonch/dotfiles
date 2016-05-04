@@ -1,12 +1,16 @@
-import XMonad
+import Data.Default
 import Data.Maybe
+import System.Exit
+import XMonad 
 import XMonad.Config.Xfce
+import XMonad.Layout.Column
+import XMonad.Layout.MosaicAlt
+import XMonad.Layout.NoFrillsDecoration
+import XMonad.Layout.SimplestFloat
+import XMonad.Layout.Spacing
+import XMonad.Layout.ThreeColumns
 import qualified Data.Map as M
 import qualified XMonad.StackSet as W
-import System.Exit
-import XMonad.Layout.Spacing
-import XMonad.Layout.NoFrillsDecoration
-import Data.Default
 
 main = xmonad myConfig
 
@@ -22,7 +26,11 @@ myConfig =
   , borderWidth = 0
   }
 
-myLayoutHook = noFrillsDeco shrinkText def{ fontName="xft:Source Sans Pro-13" } $ spacing 5 (layoutHook myDefaultConfig) ||| Full
+myLayoutHook = (myDeco . myGaps $ (simplestFloat ||| MosaicAlt M.empty ||| ThreeColMid 1 (3/100) (1/2))) ||| Full
+  where
+    myDeco = noFrillsDeco shrinkText def{ fontName="xft:Source Sans Pro-13" }
+    myGaps = spacing 5
+  
 
 -- Material Colors:             active     inactive
 myQubesColors qd = fromMaybe   ("#ffffff","#e0e0e0") . lookup (qubesLabel qd) $ colors
