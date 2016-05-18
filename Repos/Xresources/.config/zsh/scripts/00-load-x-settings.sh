@@ -1,3 +1,3 @@
 if [ -r "${HOME}/.Xresources" ]; then
-  xrdb -load "${HOME}/.Xresources"
+  xrdb -I$HOME -load "${HOME}/.Xresources"
 fi
