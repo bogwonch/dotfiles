@@ -7,5 +7,5 @@ st.tabspaces:		8
 st.chscale:		1.0
 st.cwscale:		1.0
 
-#include "~/.config/xresources/colors"
+#include "~/.config/xresources/pallete"
 
