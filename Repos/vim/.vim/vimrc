@@ -1,0 +1,7 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'tpope/vim-sensible'
+
+Plug 'hylang/vim-hy'
+
+call plug#end()
