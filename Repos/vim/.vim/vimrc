@@ -1,8 +1,21 @@
+nnoremap <SPACE> <NOP>
+let mapleader=" "
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-sensible'
 
 Plug 'hylang/vim-hy'
 Plug 'tpope/vim-speeddating' | Plug 'jceb/vim-orgmode'
+
+Plug 'Shougo/unite.vim' | Plug 'tsukkee/unite-tag'
+nnoremap <LEADER>tt :Unite tag<CR>
+nnoremap <LEADER>tf :Unite tag/file<CR>
+nnoremap <LEADER>ti :Unite tag/include<CR>
+nnoremap <LEADER>t/ :Unite tag:/
+
+Plug 'Shougo/neoinclude.vim'
+
+Plug 'xolox/vim-misc' | Plug 'xolox/vim-easytags'
 
 call plug#end()
