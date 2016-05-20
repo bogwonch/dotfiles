@@ -18,4 +18,7 @@ Plug 'Shougo/neoinclude.vim'
 
 Plug 'xolox/vim-misc' | Plug 'xolox/vim-easytags'
 
+Plug 'NLKNguyen/papercolor-theme'
 call plug#end()
+
+colorscheme PaperColor
