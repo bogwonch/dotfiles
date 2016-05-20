@@ -3,5 +3,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 
 Plug 'hylang/vim-hy'
+Plug 'tpope/vim-speeddating' | Plug 'jceb/vim-orgmode'
 
 call plug#end()
