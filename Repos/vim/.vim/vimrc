@@ -1,20 +1,34 @@
+set nocompatible
+
 nnoremap <SPACE> <NOP>
 let mapleader=" "
 
-call plug#begin('~/.vim/plugged')
+if has('nvim')
+	call plug#begin('~/.vim/nplugged')
+else
+	call plug#begin('~/.vim/plugged')
+endif
 
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive'
 
 Plug 'hylang/vim-hy'
 Plug 'tpope/vim-speeddating' | Plug 'jceb/vim-orgmode'
 
-Plug 'Shougo/unite.vim' | Plug 'tsukkee/unite-tag'
-nnoremap <LEADER>tt :Unite tag<CR>
-nnoremap <LEADER>tf :Unite tag/file<CR>
-nnoremap <LEADER>ti :Unite tag/include<CR>
-nnoremap <LEADER>t/ :Unite tag:/
-
+Plug 'Shougo/unite.vim'	| Plug 'tsukkee/unite-tag'
 Plug 'Shougo/neoinclude.vim'
+Plug 'vim-ctrlspace/vim-ctrlspace'
+Plug 'Shougo/unite.vim'	| Plug 'tsukkee/unite-help'
+
+if has('nvim')
+	function! DoRemote(arg)
+		UpdateRemotePlugins
+	endfunction
+	Plug 'Shougo/deoplete.nvim', {'do': function('DoRemote')}
+	let g:deoplete#enable_at_startup = 1
+else
+	Plug 'Shougo/neocomplete.vim'
+endif
 
 Plug 'xolox/vim-misc' | Plug 'xolox/vim-easytags'
 
@@ -22,3 +36,59 @@ Plug 'NLKNguyen/papercolor-theme'
 call plug#end()
 
 colorscheme PaperColor
+set expandtab
+set smarttab
+set shiftwidth=2
+set tabstop=2
+set softtabstop=0
+set hidden
+
+let s:mappings_loaded=0
+function! LoadMappings()
+  if s:mappings_loaded==0
+    nnoremap <silent> <LEADER>tt :Unite tag<CR>
+    nnoremap <silent> <LEADER>tf :Unite tag/file<CR>
+    nnoremap <silent> <LEADER>ti :Unite tag/include<CR>
+    nnoremap <silent> <LEADER>t/ :Unite tag:/
+    nnoremap <silent> <LEADER>bb :Unite buffer_tab<CR>
+    nnoremap <silent> <LEADER>bn :bnext<CR>
+    nnoremap <silent> <LEADER>bp :bprev<CR>
+    nnoremap <silent> <LEADER>bd :bd<CR>
+    nnoremap <silent> <LEADER>h/ :Unite help<CR>i
+    nnoremap <silent> <LEADER>hh "0yiw:Unite help<CR>"0p
+    vnoremap <silent> <LEADER>h  "0y:Unite help<CR>"0p
+    nnoremap <silent> <LEADER>gs :Gstatus<CR>
+    nnoremap <silent> <LEADER>gb :Gblame<CR>
+    nnoremap <silent> <LEADER>gp :Gpull<CR>
+    nnoremap <silent> <LEADER>gP :Gpush<CR>
+    nnoremap <silent> <LEADER>gl :Glog<CR>
+
+    if has('nvim')
+      nnoremap <silent> <LEADER>e :Unite -start-insert file_rec/neovim<CR>
+    else
+      nnoremap <silent> <LEADER>e :Unite -start-insert file_rec<CR>
+    endif
+
+    nnoremap <silent> <LEADER>ve :split ~/.vim/vimrc<CR>
+    nnoremap <silent> <LEADER>vs :source ~/.vim/vimrc<CR>:echo "reloaded vimrc"
+    nnoremap <silent> <LEADER>vrm :call ReloadMappings()<CR>:echo "reloaded vimrc and mappings"<CR>
+
+    let s:mappings_loaded=1
+  endif 
+endfunction
+
+if ! exists("s:define_once")
+  function! ReloadMappings()
+    let s:mappings_loaded=0
+    source ~/.vim/vimrc
+    call LoadMappings()
+  endfunction
+  let s:define_once=1
+endif
+
+call LoadMappings()
+
+
+
+
+
