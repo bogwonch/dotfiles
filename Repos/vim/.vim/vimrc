@@ -11,6 +11,9 @@ endif
 
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-surround'
 
 Plug 'hylang/vim-hy'
 Plug 'tpope/vim-speeddating' | Plug 'jceb/vim-orgmode'
@@ -62,6 +65,7 @@ function! LoadMappings()
     nnoremap <silent> <LEADER>gp :Gpull<CR>
     nnoremap <silent> <LEADER>gP :Gpush<CR>
     nnoremap <silent> <LEADER>gl :Glog<CR>
+    nnoremap <silent> <LEADER>gc :Gcommit<CR>
 
     if has('nvim')
       nnoremap <silent> <LEADER>e :Unite -start-insert file_rec/neovim<CR>
@@ -70,7 +74,7 @@ function! LoadMappings()
     endif
 
     nnoremap <silent> <LEADER>ve :split ~/.vim/vimrc<CR>
-    nnoremap <silent> <LEADER>vs :source ~/.vim/vimrc<CR>:echo "reloaded vimrc"
+    nnoremap <silent> <LEADER>vs :source ~/.vim/vimrc<CR>:echo "reloaded vimrc"<CR>
     nnoremap <silent> <LEADER>vrm :call ReloadMappings()<CR>:echo "reloaded vimrc and mappings"<CR>
 
     let s:mappings_loaded=1
