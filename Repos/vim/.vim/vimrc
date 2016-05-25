@@ -38,11 +38,6 @@ Plug 'xolox/vim-misc' | Plug 'xolox/vim-easytags'
 Plug 'NLKNguyen/papercolor-theme'
 
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
-let g:airline_theme='papercolor'
-let g:airline_powerline_fonts=1
-let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#tabline#left_sep=' '
-let g:airline#extensions#tabline#left_alt_sep=' '
 
 Plug 'farseer90718/vim-taskwarrior'
 
@@ -55,6 +50,18 @@ set shiftwidth=2
 set tabstop=2
 set softtabstop=0
 set hidden
+
+let g:airline_theme='papercolor'
+let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#left_sep=''
+let g:airline#extensions#tabline#left_alt_sep=''
+let g:airline#extensions#tabline#right_sep=''
+let g:airline#extensions#tabline#righ_alt_sep=''
+let g:airline_left_sep=''
+let g:airline_left_alt_sep=''
+let g:airline_right_sep=''
+let g:airline_right_alt_sep=''
 
 let s:mappings_loaded=0
 function! LoadMappings()
@@ -102,8 +109,4 @@ if ! exists("s:define_once")
 endif
 
 call LoadMappings()
-
-
-
-
 
