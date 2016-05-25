@@ -36,6 +36,16 @@ endif
 Plug 'xolox/vim-misc' | Plug 'xolox/vim-easytags'
 
 Plug 'NLKNguyen/papercolor-theme'
+
+Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
+let g:airline_theme='papercolor'
+let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#left_sep=' '
+let g:airline#extensions#tabline#left_alt_sep=' '
+
+Plug 'farseer90718/vim-taskwarrior'
+
 call plug#end()
 
 colorscheme PaperColor
@@ -66,6 +76,7 @@ function! LoadMappings()
     nnoremap <silent> <LEADER>gP :Gpush<CR>
     nnoremap <silent> <LEADER>gl :Glog<CR>
     nnoremap <silent> <LEADER>gc :Gcommit<CR>
+    nnoremap <silent> <LEADER>TW :TW<CR>
 
     if has('nvim')
       nnoremap <silent> <LEADER>e :Unite -start-insert file_rec/neovim<CR>
