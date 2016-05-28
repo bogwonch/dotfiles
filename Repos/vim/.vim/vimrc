@@ -108,7 +108,7 @@ function! LoadMappings()
     nnoremap <silent> <LEADER>gs :Gstatus<CR>
     nnoremap <silent> <LEADER>gb :Gblame<CR>
     nnoremap <silent> <LEADER>gp :Gpull<CR>
-    nnoremap <silent> <LEADER>gP :Gpush<CR>
+    nnoremap <silent> <LEADER>gP :Gpush<CR>:echo "Pushed"<CR>
     nnoremap <silent> <LEADER>gl :Glog<CR>
     nnoremap <silent> <LEADER>gc :Gcommit<CR>
     nnoremap <silent> <LEADER>TW :TW<CR>
