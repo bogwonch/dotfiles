@@ -4,9 +4,9 @@ nnoremap <SPACE> <NOP>
 let mapleader=" "
 
 if has('nvim')
-	call plug#begin('~/.vim/nplugged')
+  call plug#begin('~/.vim/nplugged')
 else
-	call plug#begin('~/.vim/plugged')
+  call plug#begin('~/.vim/plugged')
 endif
 
 Plug 'tpope/vim-sensible'
@@ -14,6 +14,18 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-vinegar'
+
+Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/limelight.vim'
+Plug 'junegunn/vim-peekaboo'
+Plug 'junegunn/vim-emoji'
+Plug 'junegunn/vim-pseudocl' | Plug 'junegunn/vim-oblique'
+
+Plug 'airblade/vim-gitgutter'
 
 Plug 'hylang/vim-hy'
 Plug 'tpope/vim-speeddating' | Plug 'jceb/vim-orgmode'
@@ -46,26 +58,41 @@ call plug#end()
 colorscheme PaperColor
 set expandtab
 set smarttab
-set shiftwidth=2
-set tabstop=2
-set softtabstop=0
+set shiftwidth   =2
+set tabstop      =2
+set softtabstop  =0
 set hidden
+set completefunc+=emoji#complete
 
-let g:airline_theme='papercolor'
-let g:airline_powerline_fonts=1
-let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#tabline#left_sep=''
-let g:airline#extensions#tabline#left_alt_sep=''
-let g:airline#extensions#tabline#right_sep=''
-let g:airline#extensions#tabline#righ_alt_sep=''
-let g:airline_left_sep=''
-let g:airline_left_alt_sep=''
-let g:airline_right_sep=''
-let g:airline_right_alt_sep=''
+let g:airline_theme                           = 'PaperColor'
+let g:airline_powerline_fonts                 = 1
+let g:airline#extensions#tabline#enabled      = 1
+let g:airline#extensions#tabline#left_sep     = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_sep    = ''
+let g:airline#extensions#tabline#righ_alt_sep = ''
+let g:airline_left_sep                        = ''
+let g:airline_left_alt_sep                    = ''
+let g:airline_right_sep                       = ''
+let g:airline_right_alt_sep                   = ''
+
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+let g:limelight_conceal_guifg   = 'DarkGray'
+let g:limelight_conceal_guifg   = '#777777'
+
+let g:gitgutter_highlight_lines         = 1
 
 let s:mappings_loaded=0
 function! LoadMappings()
   if s:mappings_loaded==0
+    xmap ga <Plug>(EasyAlign)
+    nmap ga <Plug>(EasyAlign)
+    nnoremap <silent> <LEADER>EE :%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<CR>:nohl<CR>
+    nnoremap <silent> <LEADER>an :set number!<CR>
+    nnoremap <silent> <LEADER>ar :set relativenumber!<CR>
+    nnoremap <silent> <LEADER>al :Limelight!!<CR>
+    nnoremap <silent> <LEADER>ag :GitGutterToggle<CR>
     nnoremap <silent> <LEADER>tt :Unite tag<CR>
     nnoremap <silent> <LEADER>tf :Unite tag/file<CR>
     nnoremap <silent> <LEADER>ti :Unite tag/include<CR>
@@ -109,4 +136,3 @@ if ! exists("s:define_once")
 endif
 
 call LoadMappings()
-
