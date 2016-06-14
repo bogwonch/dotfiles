@@ -46,6 +46,8 @@ else
 	Plug 'Shougo/neocomplete.vim'
 endif
 
+Plug 'scrooloose/syntastic'
+
 Plug 'xolox/vim-misc' | Plug 'xolox/vim-easytags'
 
 Plug 'NLKNguyen/papercolor-theme'
@@ -64,6 +66,7 @@ set tabstop      =2
 set softtabstop  =0
 set hidden
 set completefunc+=emoji#complete
+set mouse+=a
 
 let g:airline_theme                           = 'PaperColor'
 let g:airline_powerline_fonts                 = 1
@@ -83,6 +86,11 @@ let g:limelight_conceal_guifg   = 'DarkGray'
 let g:limelight_conceal_guifg   = '#777777'
 
 let g:gitgutter_highlight_lines         = 1
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list            = 1
+let g:syntastic_check_on_open            = 1
+let g:syntastic_check_on_wq              = 0
 
 let s:mappings_loaded=0
 function! LoadMappings()
