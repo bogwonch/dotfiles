@@ -1,4 +1,4 @@
-export DOTFILES_HOME=/opt/dotfiles/
+export DOTFILES_HOME=$HOME/Dotfiles
 
 autoload -Uz compaudit compinit
 compinit
