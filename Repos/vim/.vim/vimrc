@@ -29,6 +29,10 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'hylang/vim-hy'
 
+Plug 'elmcast/elm-vim'
+
+Plug 'vim-latex/vim-latex'
+
 Plug 'tpope/vim-speeddating' | Plug 'vim-scripts/SyntaxRange' | Plug 'jceb/vim-orgmode'
 
 Plug 'Shougo/unite.vim'	| Plug 'tsukkee/unite-tag'
